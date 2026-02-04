@@ -1,6 +1,8 @@
+"use client" // خیلی مهم
+
 import { supabase } from '@/lib/supabaseClient'
 
-export default function TestDB() {
+export default function TestDBClient() {
   async function checkDB() {
     const { data, error } = await supabase.from('users').select('*')
     if (error) console.log('Error:', error)
@@ -8,11 +10,11 @@ export default function TestDB() {
   }
 
   return (
-    <div className="p-4">
-      <h1>Test Supabase DB</h1>
-      <button onClick={checkDB} className="px-4 py-2 bg-blue-500 text-white rounded">
-        Test Connection
-      </button>
-    </div>
+    <button
+      onClick={checkDB}
+      className="px-4 py-2 bg-blue-500 text-white rounded mt-4"
+    >
+      Test Connection
+    </button>
   )
 }
